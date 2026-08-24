@@ -13,12 +13,12 @@ class GeolocationManager
             ];
         }
 
-        return nativephp_call('Geolocation.GetCurrentPosition', [
+        return nativephp_call('Geolocation.GetCurrentPosition', json_encode([
             'highAccuracy' => $highAccuracy,
-        ]);
+        ]));
     }
 
-     public function requestPermission(): mixed
+    public function requestPermission(): mixed
     {
         if (! function_exists('nativephp_call')) {
             return [
@@ -27,6 +27,6 @@ class GeolocationManager
             ];
         }
 
-        return nativephp_call('Geolocation.RequestPermission', []);
+        return nativephp_call('Geolocation.RequestPermission', json_encode([]));
     }
 }
