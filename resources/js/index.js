@@ -52,6 +52,21 @@ export async function requestPermission() {
     return bridgeCall('Geolocation.RequestPermission', {});
 }
 
+export async function getBackgroundPosition(highAccuracy = true) {
+    debugLog('getBackgroundPosition called', { highAccuracy });
+    return bridgeCall('Geolocation.GetBackgroundPosition', { highAccuracy });
+}
+
+export async function hasBackgroundPermission() {
+    debugLog('hasBackgroundPermission called');
+    return bridgeCall('Geolocation.HasBackgroundPermission', {});
+}
+
+export async function requestBackgroundPermission() {
+    debugLog('requestBackgroundPermission called');
+    return bridgeCall('Geolocation.RequestBackgroundPermission', {});
+}
+
 const Geolocation = {
     GetCurrentPosition(options = {}) {
         const highAccuracy =
@@ -66,6 +81,26 @@ const Geolocation = {
     RequestPermission() {
         debugLog('Geolocation.RequestPermission wrapper');
         return requestPermission();
+    },
+
+    GetBackgroundPosition(options = {}) {
+        const highAccuracy =
+            typeof options === 'boolean'
+                ? options
+                : (options?.highAccuracy ?? true);
+
+        debugLog('Geolocation.GetBackgroundPosition wrapper', { options, highAccuracy });
+        return getBackgroundPosition(highAccuracy);
+    },
+
+    HasBackgroundPermission() {
+        debugLog('Geolocation.HasBackgroundPermission wrapper');
+        return hasBackgroundPermission();
+    },
+
+    RequestBackgroundPermission() {
+        debugLog('Geolocation.RequestBackgroundPermission wrapper');
+        return requestBackgroundPermission();
     },
 };
 

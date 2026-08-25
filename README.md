@@ -34,10 +34,15 @@ php artisan native:run ios
 
 The package declares these for you via its `nativephp.json` manifest — you don't need to add them manually:
 
-- **Android** — `ACCESS_COARSE_LOCATION`, `ACCESS_FINE_LOCATION`
+- **Android** — `ACCESS_COARSE_LOCATION`, `ACCESS_FINE_LOCATION`, `ACCESS_BACKGROUND_LOCATION`
 - **iOS** — `NSLocationWhenInUseUsageDescription` is set to *"This app uses your location to show your current position."* Override it in your app's `info_plist` config if you want different copy.
 
 Always call `requestPermission()` before requesting a position, and handle the case where the user denies.
+
+For Android background work, request foreground permission while the app is open, then call
+`requestBackgroundPermission()`. Android 11 and later opens the app's settings screen because
+the user must explicitly choose **Allow all the time** there. Background jobs must never try to
+display permission prompts.
 
 ## Usage
 
@@ -53,6 +58,12 @@ $perm = Geolocation::requestPermission();
 $pos = Geolocation::getCurrentPosition(highAccuracy: true);
 
 // $pos = ['success' => true, 'latitude' => ..., 'longitude' => ..., 'accuracy' => ...]
+
+// While the app is open, open Android's permission settings when needed.
+$background = Geolocation::requestBackgroundPermission();
+
+// Use this from a background runtime after background permission is granted.
+$pos = Geolocation::getBackgroundPosition(highAccuracy: false);
 ```
 
 ### JavaScript (in-app)
@@ -81,8 +92,15 @@ import Geolocation, { getCurrentPosition } from 'projectmata-mobile-geolocation'
 | --------------------------------- | ---------------------------- | ---------------------------------------------------------- |
 | `Geolocation.RequestPermission`   | —                            | `{ success, granted }`                                     |
 | `Geolocation.GetCurrentPosition`  | `{ highAccuracy: boolean }`  | `{ success, latitude, longitude, accuracy, timestamp }`    |
+| `Geolocation.RequestBackgroundPermission` | —                     | `{ granted, message }`                                      |
+| `Geolocation.HasBackgroundPermission` | —                       | `{ granted }`                                               |
+| `Geolocation.GetBackgroundPosition` | `{ highAccuracy: boolean }` | Position or `BACKGROUND_LOCATION_PERMISSION_DENIED` error   |
 
-The `highAccuracy` flag maps to Fused Location's high-accuracy mode on Android and `kCLLocationAccuracyBest` on iOS.
+`getCurrentPosition()` works with either an Android activity or application context and uses an
+active Fused Location request. `getBackgroundPosition()` additionally requires Android background
+location permission, making it appropriate for scheduler and job integrations without coupling this
+package to any particular background-task plugin. The `highAccuracy` flag maps to Fused Location's
+high-accuracy mode on Android and `kCLLocationAccuracyBest` on iOS.
 
 ## License
 
