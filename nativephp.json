@@ -1,33 +1,33 @@
 {
-  "name": "projectmata/mobile-geolocation",
-  "display_name": "Projectmata Geolocation",
+  "name": "denniskrol/nativephp-geolocation",
+  "display_name": "NativePHP Geolocation",
   "namespace": "Geolocation",
 
   "bridge_functions":  [
     {
       "name": "Geolocation.GetCurrentPosition",
-      "android": "com.projectmata.mobilegeolocation.GeolocationPlugin.GetCurrentPosition",
+      "android": "com.denniskrol.nativephpgeolocation.GeolocationPlugin.GetCurrentPosition",
       "android_params": ["context"],
       "ios": "GeolocationPlugin.GetCurrentPosition"
     },
     {
       "name": "Geolocation.RequestPermission",
-      "android": "com.projectmata.mobilegeolocation.GeolocationPlugin.RequestPermission",
+      "android": "com.denniskrol.nativephpgeolocation.GeolocationPlugin.RequestPermission",
       "ios": "GeolocationPlugin.RequestPermission"
     },
     {
       "name": "Geolocation.GetBackgroundPosition",
-      "android": "com.projectmata.mobilegeolocation.GeolocationPlugin.GetBackgroundPosition",
+      "android": "com.denniskrol.nativephpgeolocation.GeolocationPlugin.GetBackgroundPosition",
       "android_params": ["context"]
     },
     {
       "name": "Geolocation.HasBackgroundPermission",
-      "android": "com.projectmata.mobilegeolocation.GeolocationPlugin.HasBackgroundPermission",
+      "android": "com.denniskrol.nativephpgeolocation.GeolocationPlugin.HasBackgroundPermission",
       "android_params": ["context"]
     },
     {
       "name": "Geolocation.RequestBackgroundPermission",
-      "android": "com.projectmata.mobilegeolocation.GeolocationPlugin.RequestBackgroundPermission"
+      "android": "com.denniskrol.nativephpgeolocation.GeolocationPlugin.RequestBackgroundPermission"
     }
   ],
    "android": {

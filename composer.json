@@ -1,24 +1,25 @@
 {
-  "name": "projectmata/mobile-geolocation",
+  "name": "denniskrol/nativephp-geolocation",
   "description": "Custom geolocation plugin for NativePHP Mobile",
   "type": "nativephp-plugin",
   "license": "MIT",
   "autoload": {
     "psr-4": {
-      "Projectmata\\MobileGeolocation\\": "src/"
+      "Denniskrol\\NativePHPGeolocation\\": "src/"
     }
   },
   "extra": {
     "laravel": {
       "providers": [
-        "Projectmata\\MobileGeolocation\\MobileGeolocationServiceProvider"
+        "Denniskrol\\NativePHPGeolocation\\NativePHPGeolocationServiceProvider"
       ]
     },
     "nativephp": {
-            "manifest": "nativephp.json"
-        }
+      "manifest": "nativephp.json"
+    }
   },
   "require": {
-    "php": "^8.1"
+    "php": "^8.4",
+    "nativephp/mobile": "^4.2"
   }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Projectmata\MobileGeolocation\Facades;
+namespace Denniskrol\NativePHPGeolocation\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
@@ -15,6 +15,6 @@ class Geolocation extends Facade
 {
     protected static function getFacadeAccessor(): string
     {
-        return 'projectmata.mobile-geolocation';
+        return 'denniskrol.nativephp-geolocation';
     }
 }

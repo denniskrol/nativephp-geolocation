@@ -1,6 +1,6 @@
 <?php
 
-namespace Projectmata\MobileGeolocation;
+namespace Denniskrol\NativePHPGeolocation;
 
 class GeolocationManager
 {

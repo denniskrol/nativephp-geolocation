@@ -1,4 +1,4 @@
-package com.projectmata.mobilegeolocation
+package com.denniskrol.nativephpgeolocation
 
 import android.Manifest
 import android.content.Context

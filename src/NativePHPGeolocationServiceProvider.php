@@ -1,14 +1,14 @@
 <?php
 
-namespace Projectmata\MobileGeolocation;
+namespace Denniskrol\NativePHPGeolocation;
 
 use Illuminate\Support\ServiceProvider;
 
-class MobileGeolocationServiceProvider extends ServiceProvider
+class NativePHPGeolocationServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->app->singleton('projectmata.mobile-geolocation', function () {
+        $this->app->singleton('denniskrol.nativephp-geolocation', function () {
             return new GeolocationManager();
         });
     }

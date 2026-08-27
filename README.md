@@ -1,14 +1,14 @@
 # Projectmata Mobile Geolocation
 
-[![Latest Version](https://img.shields.io/packagist/v/projectmata/mobile-geolocation.svg)](https://packagist.org/packages/projectmata/mobile-geolocation)
-[![Total Downloads](https://img.shields.io/packagist/dt/projectmata/mobile-geolocation.svg)](https://packagist.org/packages/projectmata/mobile-geolocation)
-[![License](https://img.shields.io/packagist/l/projectmata/mobile-geolocation.svg)](https://packagist.org/packages/projectmata/mobile-geolocation)
+[![Latest Version](https://img.shields.io/packagist/v/denniskrol/nativephp-geolocation.svg)](https://packagist.org/packages/denniskrol/nativephp-geolocation)
+[![Total Downloads](https://img.shields.io/packagist/dt/denniskrol/nativephp-geolocation.svg)](https://packagist.org/packages/denniskrol/nativephp-geolocation)
+[![License](https://img.shields.io/packagist/l/denniskrol/nativephp-geolocation.svg)](https://packagist.org/packages/denniskrol/nativephp-geolocation)
 
 Geolocation plugin for [NativePHP Mobile](https://nativephp.com). Reads the device's current position on Android and iOS with a single call.
 
 ## Requirements
 
-- PHP `^8.1`
+- PHP `^8.4`
 - Laravel `^11.0` or `^12.0` / `^13.0`
 - `nativephp/mobile`
 - Android: `min_version 33`, depends on `com.google.android.gms:play-services-location:21.3.0`
@@ -17,10 +17,8 @@ Geolocation plugin for [NativePHP Mobile](https://nativephp.com). Reads the devi
 ## Installation
 
 ```bash
-composer require projectmata/mobile-geolocation
+composer require denniskrol/nativephp-geolocation
 ```
-
-Laravel auto-discovery registers the service provider and facade automatically.
 
 Rebuild the mobile app so NativePHP wires up the native plugin and permissions:
 
@@ -49,7 +47,7 @@ display permission prompts.
 ### PHP (Laravel)
 
 ```php
-use Projectmata\MobileGeolocation\Facades\Geolocation;
+use Denniskrol\NativePHPGeolocation\Facades\Geolocation;
 
 // Ask the OS for location permission (no-op if already granted)
 $perm = Geolocation::requestPermission();
@@ -83,7 +81,7 @@ if (pos.success) {
 Or as a bundled import:
 
 ```js
-import Geolocation, { getCurrentPosition } from 'projectmata-mobile-geolocation';
+import Geolocation, { getCurrentPosition } from 'denniskrol-nativephp-geolocation';
 ```
 
 ## Bridge methods
